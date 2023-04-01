@@ -23,8 +23,10 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">zaloguj sie aby rozpoczc</p>
-
+      <p class="login-box-msg">zaloguj się aby rozpocząć</p>
+      {% if form.errors %}
+      <p class="text-danger">błędna nazwa uzytkownika lub hasło</p>
+      {% endif %}
       <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="input-group mb-3">
@@ -51,7 +53,7 @@
         </div>
       </form>
     </div>
-    <!-- /.login-card-body -->
+    <!-- /.login-card-body --> 
   </div>
 </div>
 <!-- /.login-box -->
