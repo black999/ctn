@@ -1,30 +1,38 @@
 {% extends 'obieg/index.html' %}
 
 {% block content %}
-<div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-9">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Przesłanie dokumentu</h5>
-
-              <p class="card-text">
-                Aby przesłać nową fakturę nacisnij przycisk wybierz
-              </p>
-
-              <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Prześlij</button>
-              </form>
-
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header ">
+                    <h3 class="card-title">{{ title }}</h3>
+                    <div class="card-tools">
+                        <!-- Buttons, labels, and many other things can be placed here! -->
+                        <!-- Here is a label for example -->
+                        <span class="badge badge-primary">Label</span>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <p class="card-text">
+                    Aby przesłać nową fakturę nacisnij przycisk wybierz
+                  </p>
+                  <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Prześlij</button>
+                  </form>
+                </div>
+                <!-- /.card-body -->
+                <!-- /.card-footer -->
             </div>
-          </div>
-
+            <!-- /.card --> 
         </div>
-      </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  {% endblock content %}
+        <!-- /.com-sm-12 -->
+    </div>
+    <!-- /.row -->
+</section> 
+{% endblock content %}

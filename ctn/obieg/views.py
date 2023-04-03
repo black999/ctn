@@ -34,11 +34,14 @@ def upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('docs_view')
+            pk = str(Document.objects.last().id)
+            print(pk)
+            return redirect('/doc/' + pk)
     else:
         form = DocumentForm()
     return render(request, 'obieg/upload.html', {
-        'form': form
+        'form': form,
+        'title': 'Przesyłanie dokumentu',
     })
 
 def docs_view(request):
@@ -56,3 +59,9 @@ def doc_details(request, pk):
         'title' : 'Przesłany dokument',
     }
     return render(request, 'obieg/doc_details.html', context)
+
+@login_required
+def doc_del(request, pk):
+    doc = get_object_or_404(Document, pk=pk)
+    doc.delete()
+    return redirect('docs_view')

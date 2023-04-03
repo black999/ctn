@@ -8,6 +8,11 @@
             <div class="card">
                 <div class="card-header ">
                     <h3 class="card-title">{{ title }}</h3>
+                    <div class="card-tools">
+                        <!-- Buttons, labels, and many other things can be placed here! -->
+                        <!-- Here is a label for example -->
+                        <a href="{% url 'doc_del' pk=doc.pk %}" class="btn btn-sm btn-danger">Usuń</a>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -23,6 +28,11 @@
             <div class="card">
                 <div class="card-header ">
                     <h3 class="card-title">Opis dokumentu</h3>
+                    <div class="card-tools">
+                        <!-- Buttons, labels, and many other things can be placed here! -->
+                        <!-- Here is a label for example -->
+                        <button class="btn btn-sm btn-primary">Edytuj</button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
