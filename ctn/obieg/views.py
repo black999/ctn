@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 import os
 from django.core.files.storage import FileSystemStorage
 from obieg.forms import DocumentForm
-from django.http import FileResponse
 from obieg.models import *
 
 @login_required

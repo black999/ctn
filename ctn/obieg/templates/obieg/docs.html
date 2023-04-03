@@ -28,7 +28,7 @@
                         <tbody>
                             {% for doc in docs %}
                                 <td><a href="{% url 'doc_details' pk=doc.pk %}">{{ doc.document }}</td>
-                                <td>{{ doc.description}}</td>
+                                <td>{{ doc.description |capfirst}}</td>
                                 <td>{{ doc.uploaded_at}}</td>
                                 </tr>
                             {% endfor %}
