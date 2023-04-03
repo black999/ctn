@@ -1,0 +1,41 @@
+{% extends 'obieg/index.html' %}
+
+{% block content %}
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="card">
+                <div class="card-header ">
+                    <h3 class="card-title">{{ title }}</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <embed src="{{ MEDIA_URL }}{{ doc.document }}" type="application/pdf" height="800px" width="100%">
+                </div>
+                <!-- /.card-body -->
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card --> 
+        </div>
+        <!-- /.com-sm-12 -->
+        <div class="col-sm-5">
+            <div class="card">
+                <div class="card-header ">
+                    <h3 class="card-title">Opis dokumentu</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <p>Opis :</p>
+                    <p>{{ doc.description }}</p>
+                </div>
+                <!-- /.card-body -->
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card --> 
+        </div>
+        <!-- /.com-sm-12 -->
+    </div>
+    <!-- /.row -->
+</section> 
+{% endblock content %}

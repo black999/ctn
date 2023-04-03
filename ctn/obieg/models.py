@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.core.validators import FileExtensionValidator
 
 def user_directory_path(instance, filename):
     filename = datetime.now().strftime('%Y%m%d%H%M%S%f') + ".pdf"
@@ -10,5 +11,5 @@ def user_directory_path(instance, filename):
 
 class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
-    document = models.FileField(upload_to=user_directory_path)
+    document = models.FileField(upload_to=user_directory_path, validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
     uploaded_at = models.DateTimeField(auto_now_add=True)

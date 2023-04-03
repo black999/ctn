@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
@@ -6,6 +6,7 @@ import os
 from django.core.files.storage import FileSystemStorage
 from obieg.forms import DocumentForm
 from django.http import FileResponse
+from obieg.models import *
 
 @login_required
 def index(request):
@@ -33,20 +34,25 @@ def upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('pdf_view')
+            return redirect('docs_view')
     else:
         form = DocumentForm()
     return render(request, 'obieg/upload.html', {
         'form': form
     })
 
-def pdf_view_old(request):
-    with open(settings.MEDIA_ROOT + '/pdf/2023/04/20230402174236732512.pdf', 'rb') as pdf:
-         response = FileResponse(pdf.read(), content_type='application/pdf')
-         response['Content-Disposition'] = 'filename=a.pdf'
-         return response
-    pdf.closed
+def docs_view(request):
+    dokumenty = Document.objects.all()
+    context = {
+        'docs' : dokumenty,
+        'title' : 'Przeslane dokumenty',
+    }
+    return render(request, 'obieg/docs.html', context)
 
-def pdf_view(request):
-    return render(request, 'obieg/pdf_view.html')
-
+def doc_details(request, pk):
+    doc = get_object_or_404(Document, pk=pk)
+    context = {
+        'doc' : doc,
+        'title' : 'Przesłany dokument',
+    }
+    return render(request, 'obieg/doc_details.html', context)
