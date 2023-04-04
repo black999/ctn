@@ -1,4 +1,4 @@
 from django.contrib import admin
-from obieg.models import Document
+from obieg.models import Document, Zuzycie_cel
 
-admin.site.register(Document)
+admin.site.register(Zuzycie_cel)

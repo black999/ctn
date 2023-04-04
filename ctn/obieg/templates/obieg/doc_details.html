@@ -38,8 +38,38 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <p>Opis :</p>
-                    <p>{{ doc.description }}</p>
+                    <div>
+                        <span>Opis :</span>
+                        <span>{{ doc.description }}</span>
+                    </div>
+                    <div>
+                        <span>Zuzyto na :</span>
+                        <span>{{doc.zuzyto_cel}}</span>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <td class="text-center">WINIEN</td>
+                                <td class="text-center">MA</td>
+                            </tr>
+                            <tr>
+                                <td>{{ doc.ksieg_wn1 }}</td>
+                                <td>{{ doc.ksieg_ma1 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ doc.ksieg_wn2 }}</td>
+                                <td>{{ doc.ksieg_ma2 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ doc.ksieg_wn3 }}</td>
+                                <td>{{ doc.ksieg_ma3 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ doc.ksieg_wn4 }}</td>
+                                <td>{{ doc.ksieg_ma4 }}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                 <!-- /.card-footer -->
@@ -69,4 +99,5 @@
         </div>
       </div>
     </div>
+</div>
 {% endblock content %}
