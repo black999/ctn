@@ -4,7 +4,7 @@ from obieg.models import Document
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('description', 'document' )
+        fields = ('description', 'document', 'zuzyto_cel', 'rodzaj_dokumentu' )
         labels = {
             'description': 'Opis faktury',
         }

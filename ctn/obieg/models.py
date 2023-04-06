@@ -9,21 +9,27 @@ def user_directory_path(instance, filename):
     path = rok + '/' + miesiac
     return 'pdf/{0}/{1}'.format(path, filename)
 
-def last_of_cel():
-    return Zuzycie_cel.objects.last().id
+zuzyto_cel_wybor = [
+        ('opcja1', 'opcja1'),
+        ('opcja2', 'opcja2'),
+        ('opcja3', 'opcja3'),
+    ]
 
-class Zuzycie_cel(models.Model):
-    cel = models.CharField(max_length=30, blank=True)
+rodzaj_dokumentu_wybor = [
+    ('skan', 'skan'),
+    ('elektroniczny', 'elektroniczny'),
+]
 
-    def __str__(self):
-        return self.cel
+#def last_of_cel():
+#    return Zuzycie_cel.objects.last().id
 
 class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
     document = models.FileField(upload_to=user_directory_path, validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
     uploaded_at = models.DateTimeField(auto_now_add=True)
     data_dok = models.DateField(null=True, blank=True)
-    zuzyto_cel = models.ForeignKey(Zuzycie_cel, on_delete=models.RESTRICT, default=last_of_cel)
+    zuzyto_cel = models.CharField(max_length=30, choices=zuzyto_cel_wybor)
+    rodzaj_dokumentu = models.CharField(max_length=20, choices=rodzaj_dokumentu_wybor)
     ksieg_wn1 = models.CharField(max_length=10, blank=True)
     ksieg_wn2 = models.CharField(max_length=10, blank=True)
     ksieg_wn3 = models.CharField(max_length=10, blank=True)
