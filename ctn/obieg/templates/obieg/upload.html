@@ -22,8 +22,40 @@
                   </p>
                   <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Prześlij</button>
+                    {{ form.non_field_errors}} 
+                    <div class="form-row">
+                      <div class="col">
+                        <div class="fieldWrapper form-group">
+                          {{ form.document.errors }}
+                          {{ form.document.label_tag }}
+                          {{ form.document }}
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="fieldWrapper form-group">
+                          {{ form.data_dok.errors }}
+                          {{ form.data_dok.label_tag }}
+                          {{ form.data_dok }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col">
+                        <div class="fieldWrapper form-group">
+                          {{ form.rodzaj_dokumentu.errors }}
+                          {{ form.rodzaj_dokumentu.label_tag }}
+                          {{ form.rodzaj_dokumentu }}
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="fieldWrapper form-group">
+                          {{ form.zuzyto_cel.errors }}
+                          {{ form.zuzyto_cel.label_tag }}
+                          {{ form.zuzyto_cel }}
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-primary" type="submit">Prześlij</button>
                   </form>
                 </div>
                 <!-- /.card-body -->

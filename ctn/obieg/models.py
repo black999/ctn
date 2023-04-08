@@ -27,7 +27,7 @@ class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
     document = models.FileField(upload_to=user_directory_path, validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    data_dok = models.DateField(null=True, blank=True)
+    data_dok = models.DateField()
     zuzyto_cel = models.CharField(max_length=30, choices=zuzyto_cel_wybor)
     rodzaj_dokumentu = models.CharField(max_length=20, choices=rodzaj_dokumentu_wybor)
     ksieg_wn1 = models.CharField(max_length=10, blank=True)
